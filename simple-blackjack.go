@@ -15,7 +15,9 @@ import (
 
 // Move a card from deck to hand
 func drawCard(hand *[]string, deck *[]string) {
-	// YOU FILL IN HERE
+	deckSize := len(*deck)
+	deck = deck[:deckSize-2]
+	hand = append(hand, deck[deckSize-1])
 }
 
 // Calculate the score of the hand
