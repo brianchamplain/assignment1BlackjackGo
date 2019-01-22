@@ -33,4 +33,17 @@ func printStatus(playerCards, dealerCards []string) {
 // Entry point and main game loop
 func main() {
 	// YOU FILL IN HERE
+	deck := [13]string{ "2" , "3" , "4" , "5" , "6" , "7" , "8" , "9" , "10" , "J", "Q" , "K" ,"A"}
+	var playerCards []string
+	var dealerCards []string
+
+	//Shuffle randomly the deck
+	rand.seed(time.Now().UnixNano())
+	//Fisher-Yates Shuffle
+	for i := len(deck) - 1 ; i > 0 ; i--
+	{
+		j := rand.Intn(i+1)
+		a[i], a[j] = a[j], a[i]
+	}
+
 }
