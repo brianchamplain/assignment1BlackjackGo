@@ -69,17 +69,64 @@ func printStatus(playerCards, dealerCards []string) {
 // Entry point and main game loop
 func main() {
 	// YOU FILL IN HERE
-	deck := [13]string{ "2" , "3" , "4" , "5" , "6" , "7" , "8" , "9" , "10" , "J", "Q" , "K" ,"A"}
-	var playerCards []string
-	var dealerCards []string
+deck: = [13]string{ "2" , "3" , "4" , "5" , "6" , "7" , "8" , "9" , "10" , "J", "Q" , "K" ,"A" }
+	var playerCards[]string
+	var dealerCards[]string
 
 	//Shuffle randomly the deck
 	rand.seed(time.Now().UnixNano())
 	//Fisher-Yates Shuffle
-	for i := len(deck) - 1 ; i > 0 ; i--
+	for i : = len(deck) - 1; i > 0; i--
 	{
-		j := rand.Intn(i+1)
+	j: = rand.Intn(i + 1)
 		a[i], a[j] = a[j], a[i]
 	}
+	  fmt.Printf("Dealer draws first card.")
+		  drawCard(dealerCards, deck)
+		  fmt.Printf("Player receives two cards.")
+		  drawCard(playerCards, deck)
+		  drawCard(playerCards, deck)
+		  printStatus(playerCards, dealerCards)
 
+		  //player decision loop
+		  var decision bool = true
+		  for decision == true {
+			  fmt.Printf("Do you want to (H)it, (S)tay, or (Q)uit?")
+				  var response int
+				  fmt.Scanf("%c", &response)
+				  if response == "H" || response == "h" {
+					  drawCard(playerCards, deck)
+						  printStatus(playerCards, dealerCards)
+						  if calculateScore(playerCards) > 21{
+							  fmt.Printf("You busted! You lose!")
+								  os.exit(1)
+						  }
+				  }
+				  else if response == "S" || response == "s"{
+					  fmt.Printf("You chose to stay")
+						  printStatus(playerCards, dealerCards)
+				  }
+				  else {
+					  os.exit(1)
+				  }
+
+		  }
+
+	  //Dealer's turn
+	  fmt.Printf("Dealer draws rest of cards.")
+		  for calculateScore(dealerCards) < 17	{
+			  drawCard(dealerCards, deck)
+		  }
+	  printStatus(playerCards, dealerCards)
+
+		  if calculateScore(dealerCards) > 21 {
+			  fmt.Printf("Dealer busts! You win!")
+		  }
+		  else if calculateScore(dealerCards) < calculateScore(playerCards) {
+			  fmt.Printf("Dealer wins!")
+		  }
+		  else {
+			  fmt.Printf("It's a tie!")
+		  }
+	os.exit(1)
 }
