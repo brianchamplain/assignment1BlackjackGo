@@ -1,7 +1,23 @@
+
 // Simple Blackjack for CSI 380
 // This program play's a simple, single suit game of Blackjack
 // against a computer dealer.
-
+/*
+Author: Brian Nguyen, Jacob Rose
+Class: CSI 430-01
+Assignment: Assignment 1
+​Date Assigned:
+Due Date: Jan 24, 2019
+Description: Simple version of blackjack in go lang.
+Certification of Authenticity: I certify that this is entirely my own work, except where I have given
+fully‐documented references to the work of others. I understand the definition and
+consequences of plagiarism and acknowledge that the assessor of this assignment
+may, for the purpose of assessing this assignment:
+‐ Reproduce this assignment and provide a copy to another member of academic
+‐ staff; and/or Communicate a copy of this assignment to a plagiarism checking
+‐ service (which may then retain a copy of this assignment on its database for the
+‐ purpose of future plagiarism checking)
+*/
 package main
 
 import (
@@ -99,7 +115,8 @@ func main() {
 		  for decision == true {
 			  fmt.Printf("Do you want to (H)it, (S)tay, or (Q)uit?")
 				  var response string
-				  fmt.Scanf("%c", &response)
+				  fmt.Scanln(&response)
+				  fmt.Printf(response)
 				  if response == "H" || response == "h" {
 					  drawCard(&playerCards, &deck)
 						  printStatus(playerCards, dealerCards)
