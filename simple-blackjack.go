@@ -13,7 +13,8 @@ import (
 	"time"
 )
 
-//used in calculate
+//used in calculate 
+
 const valueMap map[string]int = {
 	"2" : 2,
 	"3" : 3,
@@ -69,16 +70,16 @@ func printStatus(playerCards, dealerCards []string) {
 // Entry point and main game loop
 func main() {
 	// YOU FILL IN HERE
-deck: = [13]string{ "2" , "3" , "4" , "5" , "6" , "7" , "8" , "9" , "10" , "J", "Q" , "K" ,"A" }
+	deck := []string{ "2" , "3" , "4" , "5" , "6" , "7" , "8" , "9" , "10" , "J", "Q" , "K" ,"A" }
 	var playerCards[]string
 	var dealerCards[]string
 
 	//Shuffle randomly the deck
-	rand.seed(time.Now().UnixNano())
+	//rand.seed(time.Now().UnixNano())
 	//Fisher-Yates Shuffle
-	for i : = len(deck) - 1; i > 0; i--
+	for i := len(deck) - 1; i > 0; i--
 	{
-	j: = rand.Intn(i + 1)
+	j := rand.Intn(i + 1)
 		a[i], a[j] = a[j], a[i]
 	}
 	  fmt.Printf("Dealer draws first card.")
@@ -98,8 +99,8 @@ deck: = [13]string{ "2" , "3" , "4" , "5" , "6" , "7" , "8" , "9" , "10" , "J", 
 					  drawCard(playerCards, deck)
 						  printStatus(playerCards, dealerCards)
 						  if calculateScore(playerCards) > 21{
-							  fmt.Printf("You busted! You lose!")
-								  os.exit(1)
+							fmt.Printf("You busted! You lose!")
+							os.exit(1)
 						  }
 				  }
 				  else if response == "S" || response == "s"{
