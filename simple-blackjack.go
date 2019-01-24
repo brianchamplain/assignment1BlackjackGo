@@ -77,8 +77,7 @@ func main() {
 	//Shuffle randomly the deck
 	//rand.seed(time.Now().UnixNano())
 	//Fisher-Yates Shuffle
-	for i := len(deck) - 1; i > 0; i--
-	{
+	for i := len(deck) - 1; i > 0; i-- {
 	j := rand.Intn(i + 1)
 		a[i], a[j] = a[j], a[i]
 	}
@@ -100,16 +99,14 @@ func main() {
 						  printStatus(playerCards, dealerCards)
 						  if calculateScore(playerCards) > 21{
 							fmt.Printf("You busted! You lose!")
-							os.exit(1)
+							os.Exit(0)
 						  }
-				  }
-				  else if response == "S" || response == "s"{
+				  	} else if response == "S" || response == "s"{
 					  fmt.Printf("You chose to stay")
 						  printStatus(playerCards, dealerCards)
-				  }
-				  else {
-					  os.exit(1)
-				  }
+				  	} else {
+					  os.Exit(0)
+				  	}
 
 		  }
 
@@ -122,12 +119,10 @@ func main() {
 
 		  if calculateScore(dealerCards) > 21 {
 			  fmt.Printf("Dealer busts! You win!")
-		  }
-		  else if calculateScore(dealerCards) < calculateScore(playerCards) {
+		  } else if calculateScore(dealerCards) < calculateScore(playerCards) {
 			  fmt.Printf("Dealer wins!")
-		  }
-		  else {
+		  } else {
 			  fmt.Printf("It's a tie!")
 		  }
-	os.exit(1)
+	os.Exit(0)
 }
