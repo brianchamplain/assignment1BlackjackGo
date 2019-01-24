@@ -9,8 +9,8 @@ import (
 	"math/rand"
 	"os"
 	"strconv"
-	"strings"
-	"time"
+	//"strings"
+	//"time"
 )
 
 //used in calculate 
@@ -32,6 +32,7 @@ var valueMap = map[string]int {
 
 // Move a card from deck to hand
 func drawCard(hand *[]string, deck *[]string) {
+	deckSize := len(*deck)
 	hand = append(hand, deck[deckSize-1]) //add last element from deck slice to the end of the hand
 	deck = deck[:len(*deck)-2] //should remove the last element from the deck
 }
@@ -71,8 +72,8 @@ func printStatus(playerCards, dealerCards []string) {
 func main() {
 	// YOU FILL IN HERE
 	deck := []string{ "2" , "3" , "4" , "5" , "6" , "7" , "8" , "9" , "10" , "J", "Q" , "K" ,"A" }
-	var playerCards[]string
-	var dealerCards[]string
+	var playerCards []string
+	var dealerCards []string
 
 	//Shuffle randomly the deck
 	//rand.seed(time.Now().UnixNano())
