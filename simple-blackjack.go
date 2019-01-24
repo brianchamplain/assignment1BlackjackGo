@@ -32,9 +32,14 @@ var valueMap = map[string]int {
 
 // Move a card from deck to hand
 func drawCard(hand *[]string, deck *[]string) {
-	deckSize := len(*deck)
-	hand = append(hand, deck[deckSize-1]) //add last element from deck slice to the end of the hand
-	deck = deck[:len(*deck)-2] //should remove the last element from the deck
+	deckSize := len(*deck)-1
+	tmpDeck := *deck
+	topCard := tmpDeck[deckSize]
+	tmpHand := append(*hand, topCard) //add last element from deck slice to the end of the hand
+	*hand = tmpHand
+	
+	tmpDeck = tmpDeck[:len(*deck)-2] //should remove the last element from the deck
+	*deck = tmpDeck
 }
 
 // Calculate the score of the hand
@@ -105,6 +110,7 @@ func main() {
 				  	} else if response == "S" || response == "s"{
 					  fmt.Printf("You chose to stay")
 						  printStatus(playerCards, dealerCards)
+						  decision = false
 				  	} else {
 					  os.Exit(0)
 				  	}
